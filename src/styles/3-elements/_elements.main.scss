@@ -1,0 +1,32 @@
+@use '~styles/0-settings/settings.breakpoints' as *;
+@use '~styles/0-settings/settings.colors' as *;
+@use '~styles/0-settings/settings.fonts' as *;
+
+html {
+  font-weight: $font-weight-regular;
+  font-size: 62.5%;
+  font-family: $font-family;
+  line-height: 1.15;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: var(--color-black);
+  font-size: 19px;
+  line-height: 1.15;
+}
+
+// Pure rgb values allow us to do something like: rgba(var(--color-black-rgb), 0.2)
+// --color-black-rgb: 255, 255, 255;
+:root {
+  // Colors
+  @each $color-name, $color-hex in $colors {
+    --color-#{$color-name}: #{$color-hex};
+    --color-#{$color-name}-rgb: #{hex-to-rgb($color-hex)};
+  }
+
+  // Default ci
+  --ci-color: var(--color-red);
+  --ci-color-rgb: var(--color-red);
+}

@@ -1,0 +1,5 @@
+@use '~styles/1-tools/mixins/tools.typography' as *;
+
+h1 {
+  @include h1;
+}

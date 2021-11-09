@@ -1,0 +1,53 @@
+/*
+ see: https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/ */
+
+/* 0. Settings (⚠️ no direct css output ⚠️)
+  ==========================================================================
+  contain font, colors definitions, etc. */
+
+@use '0-settings/settings.breakpoints' as settings-breakpoints;
+@use '0-settings/settings.colors' as settings-colors;
+@use '0-settings/settings.fonts' as settings-fonts;
+@use '0-settings/settings.paths' as settings-paths;
+
+/* 1. Tools (⚠️ no direct css output ⚠️)
+  ==========================================================================
+  globally used mixins and functions */
+
+/* Functions */
+// @use '1-tools/functions/tools.xxx';
+
+/* Mixins */
+@use '1-tools/mixins/tools.button' as tools-button;
+@use '1-tools/mixins/tools.container' as tools-container;
+@use '1-tools/mixins/tools.fontface' as tools-fontface;
+@use '1-tools/mixins/tools.lists' as tools-lists;
+@use '1-tools/mixins/tools.media-query' as tools-media-query;
+@use '1-tools/mixins/tools.typography' as tools-typography;
+
+/* 2. Generic
+  ==========================================================================
+  reset and/or normalize styles, box-sizing definition, etc. */
+
+@use '2-generic/generic.normalize.scss';
+
+/* 3. Elements
+  ==========================================================================
+  styling for bare HTML elements (like H1, A, etc.) */
+
+@use '3-elements/elements.button' as elements-button;
+@use '3-elements/elements.main' as elements-main;
+@use '3-elements/elements.typography' as elements-typography;
+
+/* 4. Objects
+  ==========================================================================
+  class-based selectors which define undecorated design patterns */
+
+// @use '4-objects/objects.xxx';
+
+
+/* 5. Utilities (⚠️ override anything ⚠)
+  ==========================================================================
+  utilities and helper classes with ability to override anything which
+  goes before */
+@use '5-utilities/utilities.accessibility';
