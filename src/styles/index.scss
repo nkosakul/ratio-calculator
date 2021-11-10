@@ -43,11 +43,12 @@
   ==========================================================================
   class-based selectors which define undecorated design patterns */
 
-// @use '4-objects/objects.xxx';
+@use '4-objects/objects.containers' as objects-containers;
 
 
 /* 5. Utilities (⚠️ override anything ⚠)
   ==========================================================================
   utilities and helper classes with ability to override anything which
   goes before */
-@use '5-utilities/utilities.accessibility';
+@use '5-utilities/utilities.accessibility' as utilities-accessibility;
+@use '5-utilities/utilities.typography' as utilities-typography;
