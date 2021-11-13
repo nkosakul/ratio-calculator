@@ -24,12 +24,18 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@use '~styles/1-tools/mixins/tools.media-query' as *;
+
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   margin-top: 5rem;
   margin-bottom: 5rem;
-  gap: 3rem
+  gap: 3rem;
+
+  @include mq(small) {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .grid-col {

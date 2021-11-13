@@ -42,6 +42,8 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@use '~styles/1-tools/mixins/tools.media-query' as *;
+
 .navigation {
   grid-area: header;
   padding-top: 3rem;
@@ -49,7 +51,11 @@ export default defineComponent({
 }
 
 .logo svg {
-  width: 120px;
+  width: 100px;
   height: auto;
+
+  @include mq(small) {
+    width: 120px;
+  }
 }
 </style>
