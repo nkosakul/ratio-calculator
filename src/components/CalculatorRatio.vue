@@ -25,8 +25,9 @@
           v-model="height"
           @blur="calculateRatio"
           :aria-invalid="heightHasError"
+          aria-describedBy="height-ratio-error"
         >
-        <span class="form__error" v-show="heightHasError">Only numbers are allowed!</span>
+        <span id="height-ratio-error" class="form__error" v-show="heightHasError">Only numbers are allowed!</span>
       </div>
 
       <div class="form__item">
