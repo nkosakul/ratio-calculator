@@ -6,7 +6,15 @@
 
       <div class="form__item">
         <label class="form__label" for="calc-ratio-width">Width</label>
-        <input class="form__input" id="calc-ratio-width" v-model="width" @blur="calculateRatio">
+        <input
+          class="form__input"
+          id="calc-ratio-width"
+          v-model="width"
+          @blur="calculateRatio"
+          :aria-invalid="widthHasError"
+          aria-describedby="width-ratio-error"
+        >
+        <span id="width-ratio-error" class="form__error" v-show="widthHasError">Only numbers are allowed!</span>
       </div>
 
       <div class="form__item">
@@ -16,7 +24,10 @@
           id="calc-ratio-ratioeight"
           v-model="height"
           @blur="calculateRatio"
+          :aria-invalid="heightHasError"
+          aria-describedby="height-ratio-error"
         >
+        <span id="height-ratio-error" class="form__error" v-show="heightHasError">Only numbers are allowed!</span>
       </div>
 
       <div class="form__item">
@@ -47,13 +58,31 @@ export default defineComponent({
       width: '',
       height: '',
       ratio: '',
+      widthHasError: false,
+      heightHasError: false,
     };
   },
   methods: {
     calculateRatio() {
-      // TODO: validate inputs
-      if (!this.height || !this.width) return;
+      // check if inputfields are valid and throw error if not
+      if (this.isInvalid()) return;
 
+      // calculate and set ratio
+      if (this.height && this.width) this.setRatio();
+    },
+    isInvalid(): boolean {
+      // regex test, only allow numbers
+      const regex = /^\d*\.?\d*$/;
+      const testWidth = regex.test(this.width);
+      const testHeight = regex.test(this.height);
+      const failedValidation = !testWidth || !testHeight;
+
+      this.widthHasError = !testWidth;
+      this.heightHasError = !testHeight;
+
+      return failedValidation;
+    },
+    setRatio() {
       const width = parseInt(this.width, 10);
       const height = parseInt(this.height, 10);
       const ratio = this.gcd(width, height);
@@ -66,6 +95,8 @@ export default defineComponent({
       this.width = '';
       this.height = '';
       this.ratio = '';
+      this.widthHasError = false;
+      this.heightHasError = false;
     },
   },
 });

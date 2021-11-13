@@ -13,17 +13,36 @@
           v-model="ratio"
           placeholder="16:9"
           @blur="calculateSize"
+          :aria-invalid="ratioHasError"
+          aria-describedby="ratio-size-error"
         >
+        <span id="ratio-size-error" class="form__error" v-show="ratioHasError">Only numbers and ":" are allowed!</span>
       </div>
 
       <div class="form__item">
         <label class="form__label" for="calc-size-width">Width</label>
-        <input class="form__input" id="calc-size-width" v-model="width" @blur="calculateHeight">
+        <input
+          class="form__input"
+          id="calc-size-width"
+          v-model="width"
+          @blur="calculateHeight"
+          :aria-invalid="heightHasError"
+          aria-describedby="width-size-error"
+        >
+        <span id="width-size-error" class="form__error" v-show="widthHasError">Only numbers are allowed!</span>
       </div>
 
       <div class="form__item">
         <label class="form__label" for="calc-size-sizeeight">Height</label>
-        <input class="form__input" id="calc-size-sizeeight" v-model="height" @blur="calculateWidth">
+        <input
+          class="form__input"
+          id="calc-size-sizeeight"
+          v-model="height"
+          @blur="calculateWidth"
+          :aria-invalid="heightHasError"
+          aria-describedby="height-size-error"
+        >
+        <span id="height-size-error" class="form__error" v-show="heightHasError">Only numbers are allowed!</span>
       </div>
 
       <div class="form__item">
@@ -35,6 +54,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { inputTypes } from '../types';
 
 export default defineComponent({
   name: 'CalculatorSize',
@@ -43,6 +63,9 @@ export default defineComponent({
       width: '',
       height: '',
       ratio: '',
+      widthHasError: false,
+      heightHasError: false,
+      ratioHasError: false,
     };
   },
   computed: {
@@ -59,20 +82,27 @@ export default defineComponent({
   },
   methods: {
     calculateSize() {
-      // TODO: validate input ratio
+      // check if inputfield is valid and throw error if not
+      if (this.inputIsInvalid('ratio', this.ratio)) return;
+
+      // if ratio field or width & height are empty, return
       if (!this.ratio || (!this.height && !this.width)) return;
 
-      // TODO: what should i do if width and height is set?
+      // if height is missing or width & height are already set => calculate height
       if ((this.width && !this.height) || (this.width && this.height)) {
         this.calculateHeight();
       }
 
+      // calculate width, of height input is set
       if (this.height && !this.width) {
         this.calculateWidth();
       }
     },
     calculateHeight() {
-      // TODO: validate input width
+      // check if inputfield is valid and throw error if not
+      if (this.inputIsInvalid('width', this.width)) return;
+
+      // ratio and width must be set to start calculation
       if (!this.ratio || !this.width) return;
 
       const { rat1, rat2 } = this.convertedRatio;
@@ -81,17 +111,43 @@ export default defineComponent({
       this.height = `${calculatedHeight}`;
     },
     calculateWidth() {
-      // TODO: validate input height
+      // check if inputfield is valid and throw error if not
+      if (this.inputIsInvalid('height', this.height)) return;
+
+      // ratio and height must be set to start calculation
       if (!this.ratio || !this.height) return;
 
       const { rat1, rat2 } = this.convertedRatio;
       const calculatedWidth = Math.round(parseInt(this.height, 10) * (rat1 / rat2));
       this.width = `${calculatedWidth}`;
     },
+    inputIsInvalid(type: inputTypes, value: string): boolean {
+      // regex test, only allow numbers
+      const regex = type === 'ratio' ? /^\d*:?\d*$/ : /^\d*\.?\d*$/;
+      const testInput = regex.test(value);
+      const failedValidation = !testInput;
+
+      if (type === 'width') {
+        this.widthHasError = failedValidation;
+      }
+
+      if (type === 'height') {
+        this.heightHasError = failedValidation;
+      }
+
+      if (type === 'ratio') {
+        this.ratioHasError = failedValidation;
+      }
+
+      return failedValidation;
+    },
     resetForm() {
       this.width = '';
       this.height = '';
       this.ratio = '';
+      this.widthHasError = false;
+      this.heightHasError = false;
+      this.ratioHasError = false;
     },
   },
 });
