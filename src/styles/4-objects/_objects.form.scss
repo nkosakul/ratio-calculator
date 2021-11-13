@@ -50,3 +50,8 @@
   cursor: default;
 }
 
+.form__error {
+  color: var(--color-red);
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
