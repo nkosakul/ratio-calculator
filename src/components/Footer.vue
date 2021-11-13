@@ -24,6 +24,10 @@ export default defineComponent({
   grid-area: footer;
 }
 
+.footer__inner {
+  display: flex;
+  justify-content: flex-end;
+}
 .footer__copyright {
   font-size: 1.5rem;
 }

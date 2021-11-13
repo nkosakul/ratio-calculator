@@ -26,6 +26,7 @@
           id="calc-ratio-ratio"
           :value="ratio"
           readonly
+          aria-live="polite"
         >
       </div>
 
