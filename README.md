@@ -1,4 +1,12 @@
-# ratio-calculator
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fce28f24-f573-4051-ae4e-fa79762dd7b8/deploy-status)](https://app.netlify.com/sites/aspect-ratio-calculator/deploys)
+
+![Aspect Ratio Calculator](https://aspect-ratio-calculator.netlify.app/apple-touch-icon.png)
+
+# Aspect Ratio Calculator
+
+Get the aspect ratio of your images or get a image dimension from a given aspect ratio.
+
+[to website](https://aspect-ratio-calculator.netlify.app/)
 
 ## Project setup
 ```
