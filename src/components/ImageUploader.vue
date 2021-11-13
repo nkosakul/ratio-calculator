@@ -27,7 +27,7 @@
             <strong>width:</strong> <span>{{width}}</span>
           </li>
           <li>
-            <strong>height:</strong> <span>{{width}}</span>
+            <strong>height:</strong> <span>{{height}}</span>
           </li>
           <li>
             <strong>ratio:</strong> <span>{{ratio}}</span>
