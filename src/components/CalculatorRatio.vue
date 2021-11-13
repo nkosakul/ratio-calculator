@@ -12,7 +12,7 @@
           v-model="width"
           @blur="calculateRatio"
           :aria-invalid="widthHasError"
-          aria-describedBy="width-ratio-error"
+          aria-describedby="width-ratio-error"
         >
         <span id="width-ratio-error" class="form__error" v-show="widthHasError">Only numbers are allowed!</span>
       </div>
@@ -25,7 +25,7 @@
           v-model="height"
           @blur="calculateRatio"
           :aria-invalid="heightHasError"
-          aria-describedBy="height-ratio-error"
+          aria-describedby="height-ratio-error"
         >
         <span id="height-ratio-error" class="form__error" v-show="heightHasError">Only numbers are allowed!</span>
       </div>
