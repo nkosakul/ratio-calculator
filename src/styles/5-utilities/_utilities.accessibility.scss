@@ -1,0 +1,34 @@
+// Visually hidden (screenreader only)
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+}
+
+// Undo hiding
+@mixin visible {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: inherit;
+  padding: inherit;
+  overflow: auto;
+  clip: auto;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.sr-only {
+  @include sr-only;
+}
+
+.is-visible {
+  @include visible;
+}

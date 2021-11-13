@@ -1,0 +1,9 @@
+@use '~styles/1-tools/mixins/tools.button' as *;
+
+button {
+  @include reset-button;
+
+  &:focus-visible {
+    outline: 2px dotted var(--black-color);
+  }
+}

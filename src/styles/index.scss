@@ -1,0 +1,33 @@
+/*
+ see: https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/ */
+
+/* 2. Generic
+  ==========================================================================
+  reset and/or normalize styles, box-sizing definition, etc. */
+
+@use '2-generic/generic.normalize.scss';
+
+/* 3. Elements
+  ==========================================================================
+  styling for bare HTML elements (like H1, A, etc.) */
+
+@use '3-elements/elements.button' as elements-button;
+@use '3-elements/elements.links' as elements-links;
+@use '3-elements/elements.main' as elements-main;
+@use '3-elements/elements.typography' as elements-typography;
+
+/* 4. Objects
+  ==========================================================================
+  class-based selectors which define undecorated design patterns */
+
+  @use '4-objects/objects.buttons' as objects-buttons;
+  @use '4-objects/objects.containers' as objects-containers;
+  @use '4-objects/objects.form' as objects-form;
+
+
+/* 5. Utilities (⚠️ override anything ⚠)
+  ==========================================================================
+  utilities and helper classes with ability to override anything which
+  goes before */
+@use '5-utilities/utilities.accessibility' as utilities-accessibility;
+@use '5-utilities/utilities.typography' as utilities-typography;
