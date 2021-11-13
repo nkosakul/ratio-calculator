@@ -51,6 +51,10 @@ main {
   align-items: center;
 }
 
+section {
+  margin-bottom: 5rem;
+}
+
 h1 {
   text-align: center;
 }

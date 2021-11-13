@@ -1,7 +1,7 @@
 <template>
   <header class="navigation">
     <div class="navigation__inner container--large">
-      <a href="" class="logo">
+      <a href="#" class="logo">
         <span class="sr-only">aspect ratio calculator</span>
         <svg aria-hidden="true" width="157" height="73" viewBox="0 0 157 73" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M22.6602 28C22.5195 27.7422 22.3945 27.3633 22.2852 26.8633C21.5586 27.7773 20.543 28.2344 19.2383 28.2344C18.043 28.2344 17.0273 27.875 16.1914 27.1562C15.3555 26.4297 14.9375 25.5195 14.9375 24.4258C14.9375 23.0508 15.4453 22.0117 16.4609 21.3086C17.4766 20.6055 18.9531 20.2539 20.8906 20.2539H22.1094V19.5859C22.1094 18.4219 21.6055 17.8398 20.5977 17.8398C19.6602 17.8398 19.1914 18.3008 19.1914 19.2227H15.2422C15.2422 17.9961 15.7617 17 16.8008 16.2344C17.8477 15.4688 19.1797 15.0859 20.7969 15.0859C22.4141 15.0859 23.6914 15.4805 24.6289 16.2695C25.5664 17.0586 26.0469 18.1406 26.0703 19.5156V25.1289C26.0859 26.293 26.2656 27.1836 26.6094 27.8008V28H22.6602ZM20.1875 25.4219C20.6797 25.4219 21.0859 25.3164 21.4062 25.1055C21.7344 24.8945 21.9688 24.6562 22.1094 24.3906V22.3633H20.9609C19.5859 22.3633 18.8984 22.9805 18.8984 24.2148C18.8984 24.5742 19.0195 24.8672 19.2617 25.0938C19.5039 25.3125 19.8125 25.4219 20.1875 25.4219Z" fill="black"/>
@@ -42,6 +42,8 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@use '~styles/1-tools/mixins/tools.media-query' as *;
+
 .navigation {
   grid-area: header;
   padding-top: 3rem;
@@ -49,7 +51,11 @@ export default defineComponent({
 }
 
 .logo svg {
-  width: 120px;
+  width: 100px;
   height: auto;
+
+  @include mq(small) {
+    width: 120px;
+  }
 }
 </style>

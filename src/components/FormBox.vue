@@ -7,29 +7,37 @@
       <CalculatorRatio />
     </div>
   </div>
+  <ImageUploader />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import CalculatorSize from './CalculatorSize.vue';
 import CalculatorRatio from './CalculatorRatio.vue';
+import ImageUploader from './ImageUploader.vue';
 
 export default defineComponent({
   name: 'FormBox',
   components: {
     CalculatorSize,
     CalculatorRatio,
+    ImageUploader,
   },
 });
 </script>
 
 <style scoped lang="scss">
+@use '~styles/1-tools/mixins/tools.media-query' as *;
+
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   margin-top: 5rem;
-  margin-bottom: 5rem;
-  gap: 3rem
+  grid-template-columns: 1fr;
+  gap: 3rem;
+
+  @include mq(small) {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .grid-col {

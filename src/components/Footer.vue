@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="footer__inner container--large">
       <small class="footer__copyright">
-        Made with <span class="text--red">♥</span> by Nattaphong Kosakul
+        Made with <span class="text--red" aria-hidden="true">♥</span><span class="sr-only">love</span> by Nattaphong Kosakul
       </small>
     </div>
   </footer>
