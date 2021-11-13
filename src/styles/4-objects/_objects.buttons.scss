@@ -1,0 +1,36 @@
+@use '~styles/0-settings/settings.fonts' as *;
+
+.button {
+  display: inline-block;
+  padding: 1em 2em;
+  text-decoration: none;
+  background-color: var(--color-gray-light);
+  border-radius: 3px;
+  color: var(--color-gray-dark);
+  font-size: 1.5rem;
+  font-weight: $font-weight-bold;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-gray-dark);
+  }
+}
+
+.button--yellow {
+  background-color: var(--color-yellow);
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-yellow-dark);
+  }
+}
+
+.button--blue {
+  background-color: var(--color-blue);
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-blue-dark);
+  }
+}

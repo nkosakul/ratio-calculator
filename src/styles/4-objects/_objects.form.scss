@@ -1,0 +1,50 @@
+@use '~styles/0-settings/settings.fonts' as *;
+
+.form__legend {
+  font-size: 2rem;
+  font-weight: $font-weight-bold;
+  padding: 2rem 3rem;
+  text-align: center;
+  border-bottom: 3px solid var(--color-gray-light);
+}
+
+.form__legend--yellow {
+  border-color: var(--color-yellow);
+}
+
+.form__legend--blue {
+  border-color: var(--color-blue);
+}
+
+.form__wrapper {
+  padding: 1rem 3rem 3rem 3rem;
+}
+
+.form__item {
+  margin-top: 2rem;
+}
+
+.form__label {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: $font-weight-bold;
+  display: inline-block;
+  color: var(--color-black);
+}
+
+.form__input {
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: none;
+  background-color: var(--color-gray);
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form__input[readonly] {
+  background-color: transparent;
+  cursor: default;
+}
+

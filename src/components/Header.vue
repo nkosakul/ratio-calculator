@@ -1,6 +1,6 @@
 <template>
   <header class="navigation">
-    <div class="navigation__inner container--small">
+    <div class="navigation__inner container--large">
       Header
     </div>
   </header>

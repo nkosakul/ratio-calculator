@@ -47,6 +47,8 @@ export default defineComponent({
 
 main {
   grid-area: main;
+  display: flex;
+  align-items: center;
 }
 
 h1 {

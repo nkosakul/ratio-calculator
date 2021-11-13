@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <div class="footer__inner container--small">
+    <div class="footer__inner container--large">
       <small class="footer__copyright">
         Made with <span class="text--red">♥</span> by Nattaphong Kosakul
       </small>
