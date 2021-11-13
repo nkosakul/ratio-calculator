@@ -14,7 +14,7 @@
           Upload your image to get size and ratio
         </label>
         <input
-          class="sr-only"
+          class="form__file-upload"
           id="file-upload"
           type="file"
           accept="image/*"
@@ -118,6 +118,21 @@ export default defineComponent({
   background-color: var(--color-green-light);
   border-color: var(--color-green);
 }
+
+.form__item {
+  position: relative;
+}
+
+.form__file-upload {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
 .text--big {
   text-align: center;
   font-size: 4rem;
