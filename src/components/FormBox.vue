@@ -7,18 +7,21 @@
       <CalculatorRatio />
     </div>
   </div>
+  <ImageUploader />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import CalculatorSize from './CalculatorSize.vue';
 import CalculatorRatio from './CalculatorRatio.vue';
+import ImageUploader from './ImageUploader.vue';
 
 export default defineComponent({
   name: 'FormBox',
   components: {
     CalculatorSize,
     CalculatorRatio,
+    ImageUploader,
   },
 });
 </script>
@@ -28,9 +31,8 @@ export default defineComponent({
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr;
   margin-top: 5rem;
-  margin-bottom: 5rem;
+  grid-template-columns: 1fr;
   gap: 3rem;
 
   @include mq(small) {
