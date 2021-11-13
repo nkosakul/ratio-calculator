@@ -87,7 +87,7 @@ export default defineComponent({
 @use '~styles/1-tools/mixins/tools.lists' as *;
 
 .form {
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 .form__wrapper {
