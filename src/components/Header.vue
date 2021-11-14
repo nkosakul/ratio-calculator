@@ -51,6 +51,7 @@ export default defineComponent({
 }
 
 .logo svg {
+  opacity: 0;
   width: 100px;
   height: auto;
 

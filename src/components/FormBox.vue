@@ -1,10 +1,14 @@
 <template>
-  <div class="grid-container">
-    <div class="grid-col">
-      <CalculatorSize />
-    </div>
-    <div class="grid-col">
-      <CalculatorRatio />
+  <div class="frame">
+    <div class="frame__inner">
+      <div class="grid-container">
+        <div class="grid-col">
+          <CalculatorSize />
+        </div>
+        <div class="grid-col">
+          <CalculatorRatio />
+        </div>
+      </div>
     </div>
   </div>
   <ImageUploader />
@@ -30,20 +34,18 @@ export default defineComponent({
 @use '~styles/1-tools/mixins/tools.media-query' as *;
 
 .grid-container {
+  position: relative;
+  z-index: 1;
   display: grid;
-  margin-top: 5rem;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 5rem;
 
   @include mq(small) {
     grid-template-columns: 1fr 1fr;
   }
-}
 
-.grid-col {
-  border-radius: 2rem;
-  background-color: var(--color-white);
-  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0.05) 0px 2.65546px 95px 0px;
+  @include mq(large) {
+    gap: 10rem;
+  }
 }
 </style>

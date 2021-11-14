@@ -3,17 +3,17 @@
 @use '~styles/1-tools/functions/functions.hex-to-rgb' as *;
 
 html {
-  font-weight: $font-weight-regular;
+  font-weight: $font-weight-bold;
   font-size: 62.5%;
   font-family: $font-family;
   line-height: $line-height;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-gray-light);
+  background-color: var(--color-gray-dark);
 }
 
 body {
-  color: var(--color-gray-dark);
+  color: var(--color-gray-light);
   font-size: 19px;
   line-height: $line-height;
 }
@@ -26,8 +26,5 @@ body {
   }
 
   // Default ci
-  --ci-color: var(--color-yellow);
-  --ci-color-dark: var(--color-yellow-dark);
-  --ci-color-rgb: var(--color-yellow-rgb);
-  --ci-color-dark-rgb: var(--color-yellow-dark-rgb);
+  --color-ci: var(--color-gold);
 }

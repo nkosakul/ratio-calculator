@@ -2,7 +2,7 @@
 @use '~styles/1-tools/mixins/tools.media-query' as *;
 
 @mixin h1 {
-  font-weight: $font-weight-bold;
+  font-weight: $font-weight-black;
   font-size: 4rem;
   font-family: $font-family;
 

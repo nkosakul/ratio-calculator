@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="footer__inner container--large">
       <small class="footer__copyright">
-        Made with <span class="text--red" aria-hidden="true">♥</span><span class="sr-only">love</span> by Nattaphong Kosakul
+        Made with <span class="text--ci" aria-hidden="true">♥</span><span class="sr-only">love</span> by Nattaphong Kosakul
       </small>
     </div>
   </footer>
@@ -18,9 +18,8 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .footer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  background-color: var(--color-white);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   grid-area: footer;
 }
 

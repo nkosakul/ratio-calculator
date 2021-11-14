@@ -13,6 +13,7 @@
           @blur="calculateRatio"
           :aria-invalid="widthHasError"
           aria-describedby="width-ratio-error"
+          autocomplete="off"
         >
         <span id="width-ratio-error" class="form__error" v-show="widthHasError">Only numbers are allowed!</span>
       </div>
@@ -26,6 +27,7 @@
           @blur="calculateRatio"
           :aria-invalid="heightHasError"
           aria-describedby="height-ratio-error"
+          autocomplete="off"
         >
         <span id="height-ratio-error" class="form__error" v-show="heightHasError">Only numbers are allowed!</span>
       </div>
@@ -41,7 +43,7 @@
         >
       </div>
 
-      <div class="form__item">
+      <div class="form__item form__item--submit">
         <button class="button button--blue" @click="resetForm">Reset Form</button>
       </div>
     </div>

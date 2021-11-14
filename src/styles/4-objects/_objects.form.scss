@@ -1,57 +1,117 @@
 @use '~styles/0-settings/settings.fonts' as *;
+@use '~styles/1-tools/mixins/tools.media-query' as *;
 
 .form__legend {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: $font-weight-bold;
-  padding: 2rem 3rem;
   text-align: center;
-  border-bottom: 3px solid var(--color-gray-light);
   width: 100%;
   display: block;
-}
 
-.form__legend--yellow {
-  border-color: var(--color-yellow);
-}
-
-.form__legend--blue {
-  border-color: var(--color-blue);
-}
-
-.form__wrapper {
-  padding: 1rem 3rem 3rem 3rem;
+  @include mq(large) {
+    font-size: 4rem;
+  }
 }
 
 .form__item {
   margin-top: 2rem;
 }
 
+.form__item--submit {
+  margin-top: 4rem;
+}
+
 .form__label {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  font-weight: $font-weight-bold;
+  font-weight: $font-weight-black;
   display: inline-block;
-  color: var(--color-black);
 }
 
 .form__input {
-  border-radius: 3px;
+  border-radius: 0;
   outline: none;
   -webkit-appearance: none;
   width: 100%;
-  padding: 0.6rem 1rem;
-  border: none;
-  background-color: var(--color-gray);
-  transition: border-color 0.2s ease-in-out;
+  padding: 1rem;
+  border: 3px solid var(--color-gray-light);
+  font-weight: $font-weight-bold;
+  background-color: var(--color-gray-light);
+
+  &:focus-visible {
+    border-color: var(--color-ci);
+  }
 }
 
 .form__input[readonly] {
+  color: var(--color-gray-light);
+  border-color: transparent;
   background-color: transparent;
   cursor: default;
+
+  &:focus-visible {
+    border: 3px dotted var(--color-gray-light);
+  }
 }
 
 .form__error {
   color: var(--color-red);
   margin-top: 1rem;
   font-size: 1.2rem;
+}
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  margin-top: 5rem;
+}
+
+.frame::before,
+.frame::after {
+  content: '';
+  width: 55px;
+  height: 300px;
+  position: absolute;
+  display: block;
+  background-color: var(--color-gray-dark);
+  pointer-events: none;
+
+  @include mq(medium) {
+    width: 75px;
+  }
+}
+
+.frame::before {
+  bottom: 0;
+  left: 50px;
+  transform: translateY(50%) rotate(45deg);
+
+  @include mq(medium) {
+    left: 100px;
+    transform: translateY(50%) rotate(65deg);
+  }
+}
+
+.frame::after {
+  top: 0;
+  right: 50px;
+  transform: translateY(-50%) rotate(45deg);
+
+  @include mq(medium) {
+    right: 100px;
+    transform: translateY(-50%) rotate(65deg);
+  }
+}
+
+.frame__inner {
+  padding: 10% 6%;
+  border: 20px solid var(--color-ci);
+
+  @include mq(medium) {
+    border-width: 30px;
+  }
+
+  @include mq(large) {
+    padding: 6% 7%;
+  }
 }

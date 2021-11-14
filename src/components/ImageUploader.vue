@@ -3,26 +3,32 @@
     <p class="text--big">or</p>
     <legend class="sr-only">Drop your Image</legend>
 
-    <div class="form__wrapper">
-
-      <div class="form__item">
-        <label
-          class="form__label form__label--upload"
-          :class="{ 'form__label--has-file': hasFile}"
-          for="file-upload"
-        >
-          Upload your image to get size and ratio
-        </label>
-        <input
-          class="form__file-upload"
-          id="file-upload"
-          type="file"
-          accept="image/*"
-          @change="getImageInfos"
-        >
+    <div class="frame">
+      <div class="frame__inner">
+        <div class="form__wrapper">
+          <div class="form__item">
+            <input
+              class="form__file-upload"
+              id="file-upload"
+              type="file"
+              accept="image/*"
+              @change="getImageInfos"
+            >
+            <label
+              class="form__label form__label--upload"
+              :class="{ 'form__label--has-file': hasFile}"
+              for="file-upload"
+            >
+              Upload your image to get size and ratio
+            </label>
+          </div>
+        </div>
       </div>
-      <div class="data-list-wrapper" aria-live="polite">
-        <ul class="data-list" v-show="hasFile">
+    </div>
+    <div class="data-list-wrapper" aria-live="polite">
+      <div v-show="hasFile">
+        <p class="data-list__title">Success!</p>
+        <ul class="data-list">
           <li>
             <strong>width:</strong> <span>{{width}}</span>
           </li>
@@ -87,11 +93,7 @@ export default defineComponent({
 @use '~styles/1-tools/mixins/tools.lists' as *;
 
 .form {
-  margin-top: 2rem;
-}
-
-.form__wrapper {
-  padding: 0;
+  margin-top: 5rem;
 }
 
 .form__label--upload {
@@ -101,26 +103,16 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: 2rem;
-  border: 3px dashed var(--color-gray);
-  background-color: var(--color-white);
-  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0.05) 0px 2.65546px 95px 0px;
-  aspect-ratio: 16 / 5;
+  border-radius: 0;
+  border: none;
+  background: none;
+  aspect-ratio: 16 / 1;
+  position: relative;
+  z-index: 1;
 
   @include mq(small) {
     font-size: 2.5rem;
   }
-}
-
-.form__label--has-file {
-  color: var(--color-green-dark);
-  background-color: var(--color-green-light);
-  border-color: var(--color-green);
-}
-
-.form__item {
-  position: relative;
 }
 
 .form__file-upload {
@@ -133,10 +125,21 @@ export default defineComponent({
   cursor: pointer;
 }
 
+.form__file-upload:focus-visible + label {
+  text-decoration: underline;
+  outline: 4px dotted var(--color-gray-light);
+}
+
 .text--big {
   text-align: center;
   font-size: 4rem;
   font-weight: $font-weight-bold;
+}
+
+.data-list-wrapper {
+  position: relative;
+  z-index: 1;
+  margin-top: 5rem;
 }
 
 .data-list {
@@ -152,6 +155,10 @@ export default defineComponent({
     margin-top: 2rem;
     column-gap: 20px;
   }
+}
+
+.data-list__title {
+  text-align: center;
 }
 
 .data-list li {

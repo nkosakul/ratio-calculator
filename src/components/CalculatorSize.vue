@@ -1,6 +1,6 @@
 <template>
   <form class="form" @submit.prevent="">
-    <legend class="form__legend form__legend--yellow">Calculate image size</legend>
+    <legend class="form__legend">Calculate image size</legend>
 
     <div class="form__wrapper">
       <div class="form__item">
@@ -15,6 +15,7 @@
           @blur="calculateSize"
           :aria-invalid="ratioHasError"
           aria-describedby="ratio-size-error"
+          autocomplete="off"
         >
         <span id="ratio-size-error" class="form__error" v-show="ratioHasError">Only numbers and ":" are allowed!</span>
       </div>
@@ -28,6 +29,7 @@
           @blur="calculateHeight"
           :aria-invalid="heightHasError"
           aria-describedby="width-size-error"
+          autocomplete="off"
         >
         <span id="width-size-error" class="form__error" v-show="widthHasError">Only numbers are allowed!</span>
       </div>
@@ -41,12 +43,13 @@
           @blur="calculateWidth"
           :aria-invalid="heightHasError"
           aria-describedby="height-size-error"
+          autocomplete="off"
         >
         <span id="height-size-error" class="form__error" v-show="heightHasError">Only numbers are allowed!</span>
       </div>
 
-      <div class="form__item">
-        <button class="button button--yellow" @click="resetForm">Reset Form</button>
+      <div class="form__item form__item--submit">
+        <button class="button" @click="resetForm">Reset Form</button>
       </div>
     </div>
   </form>
