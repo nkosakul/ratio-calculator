@@ -52,10 +52,6 @@
   border-color: transparent;
   background-color: transparent;
   cursor: default;
-
-  &:focus-visible {
-    border: 3px dotted var(--color-gray-light);
-  }
 }
 
 .form__error {

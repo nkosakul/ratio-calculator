@@ -38,6 +38,7 @@
           :value="ratio"
           readonly
           aria-live="polite"
+          tabindex="-1"
         >
       </div>
 

@@ -1,5 +1,5 @@
 <template>
-  <form class="form" @submit.prevent="">
+  <form class="form" @submit.prevent="calculateSize">
     <legend class="form__legend">Calculate image size</legend>
 
     <div class="form__wrapper">
@@ -12,10 +12,10 @@
           id="calc-size-ratio"
           v-model="ratio"
           placeholder="16:9"
-          @blur="calculateSize"
           :aria-invalid="ratioHasError"
           aria-describedby="ratio-size-error"
           autocomplete="off"
+          @keyup="updateLastInputUsed('ratio')"
         >
         <span id="ratio-size-error" class="form__error" v-show="ratioHasError">Only numbers and ":" are allowed!</span>
       </div>
@@ -26,10 +26,10 @@
           class="form__input"
           id="calc-size-width"
           v-model="width"
-          @blur="calculateHeight"
           :aria-invalid="heightHasError"
           aria-describedby="width-size-error"
           autocomplete="off"
+          @keyup="updateLastInputUsed('width')"
         >
         <span id="width-size-error" class="form__error" v-show="widthHasError">Only numbers are allowed!</span>
       </div>
@@ -40,16 +40,24 @@
           class="form__input"
           id="calc-size-sizeeight"
           v-model="height"
-          @blur="calculateWidth"
           :aria-invalid="heightHasError"
           aria-describedby="height-size-error"
           autocomplete="off"
+          @keyup="updateLastInputUsed('height')"
         >
         <span id="height-size-error" class="form__error" v-show="heightHasError">Only numbers are allowed!</span>
       </div>
 
       <div class="form__item form__item--submit">
-        <button class="button" @click="resetForm">Reset Form</button>
+        <button class="button" @click="calculateSize">Calculate size</button>
+        <button class="button--round" @click="resetForm">
+          <span class="button__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" aria-hidden="true">
+              <path fill="#fff" d="M384 0c-103.241 0-199.79 42.624-270.611 113.389l-113.389-113.389v329.143h329.143l-138.404-138.404c50.578-50.579 119.534-81.024 193.262-81.024 151.241 0 274.285 123.044 274.285 274.285s-123.044 274.285-274.286 274.285c-73.234 0-142.080-28.58-193.92-80.365l-77.568 77.568c72.521 72.521 168.96 112.512 271.488 112.512 211.693 0 384-172.306 384-384 0-211.748-172.306-384-384-384z"/>
+            </svg>
+          </span>
+          <span class="sr-only">Reset Form</span>
+        </button>
       </div>
     </div>
   </form>
@@ -69,6 +77,7 @@ export default defineComponent({
       widthHasError: false,
       heightHasError: false,
       ratioHasError: false,
+      lastInputUsed: '' as inputTypes,
     };
   },
   computed: {
@@ -84,6 +93,9 @@ export default defineComponent({
     },
   },
   methods: {
+    updateLastInputUsed(type: inputTypes) {
+      this.lastInputUsed = type;
+    },
     calculateSize() {
       // check if inputfield is valid and throw error if not
       if (this.inputIsInvalid('ratio', this.ratio)) return;
@@ -91,12 +103,25 @@ export default defineComponent({
       // if ratio field or width & height are empty, return
       if (!this.ratio || (!this.height && !this.width)) return;
 
+      // if width and height are set
+      if (this.width && this.height) {
+        // if width or ratio input was last used, calculate height
+        if (this.lastInputUsed === 'width' || this.lastInputUsed === 'ratio') {
+          this.calculateHeight();
+        }
+        // if height input was last used, calculate width
+        if (this.lastInputUsed === 'height') {
+          this.calculateWidth();
+        }
+      }
+
       // if height is missing or width & height are already set => calculate height
-      if ((this.width && !this.height) || (this.width && this.height)) {
+      // calculate height, if width input is set
+      if ((this.width && !this.height)) {
         this.calculateHeight();
       }
 
-      // calculate width, of height input is set
+      // calculate width, if height input is set
       if (this.height && !this.width) {
         this.calculateWidth();
       }
