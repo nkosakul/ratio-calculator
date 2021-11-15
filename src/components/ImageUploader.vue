@@ -46,6 +46,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import gcd from '../helpers/gcd';
 
 export default defineComponent({
   name: 'ImageUploader',
@@ -77,11 +78,8 @@ export default defineComponent({
       image.src = objectUrl;
     },
     setRatio(width: number, height: number) {
-      const ratio = this.gcd(width, height);
-      this.ratio = `${width / ratio}:${height / ratio}`;
-    },
-    gcd(a: number, b: number): number {
-      return (b === 0) ? a : this.gcd(b, a % b);
+      const ratio = gcd(width / height, 50);
+      this.ratio = ratio;
     },
   },
 });
