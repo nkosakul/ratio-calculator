@@ -18,7 +18,11 @@
 }
 
 .form__item--submit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 4rem;
+  column-gap: 2rem;
 }
 
 .form__label {
