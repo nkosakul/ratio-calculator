@@ -87,11 +87,37 @@ export default defineComponent({
     setRatio() {
       const width = parseInt(this.width, 10);
       const height = parseInt(this.height, 10);
-      const ratio = this.gcd(width, height);
-      this.ratio = `${width / ratio}:${height / ratio}`;
+      const ratio = this.gcd(width / height, 50);
+      this.ratio = ratio;
     },
-    gcd(a: number, b: number): number {
-      return (b === 0) ? a : this.gcd(b, a % b);
+    gcd(val: number, lim: number): string {
+      // return (b === 0) ? a : this.gcd(b, a % b);
+      let lower = [0, 1];
+      let upper = [1, 0];
+
+      while (true) {
+        const mediant = [lower[0] + upper[0], lower[1] + upper[1]];
+
+        if (val * mediant[1] > mediant[0]) {
+          if (lim < mediant[1]) {
+            return `${upper[0]}:${upper[1]}`;
+          }
+          lower = mediant;
+        } else if (val * mediant[1] === mediant[0]) {
+          if (lim >= mediant[1]) {
+            return `${mediant[0]}:${mediant[1]}`;
+          }
+          if (lower[1] < upper[1]) {
+            return `${lower[0]}:${lower[1]}`;
+          }
+          return `${upper[0]}:${upper[1]}`;
+        } else {
+          if (lim < mediant[1]) {
+            return `${lower[0]}:${lower[1]}`;
+          }
+          upper = mediant;
+        }
+      }
     },
     resetForm() {
       this.width = '';
