@@ -104,12 +104,12 @@ export default defineComponent({
   border-radius: 0;
   border: none;
   background: none;
-  aspect-ratio: 16 / 1;
   position: relative;
   z-index: 1;
 
   @include mq(small) {
     font-size: 2.5rem;
+    aspect-ratio: 16 / 1;
   }
 }
 
@@ -134,7 +134,7 @@ export default defineComponent({
   font-weight: $font-weight-bold;
 }
 
-.data-list-wrapper {
+.data-list-wrapper > div {
   position: relative;
   z-index: 1;
   margin-top: 5rem;

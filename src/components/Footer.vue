@@ -17,10 +17,17 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@use '~styles/1-tools/mixins/tools.media-query' as *;
+
 .footer {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   grid-area: footer;
+
+  @include mq(small) {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
 }
 
 .footer__inner {

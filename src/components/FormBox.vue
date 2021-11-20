@@ -2,10 +2,10 @@
   <div class="frame">
     <div class="frame__inner">
       <div class="grid-container">
-        <div class="grid-col">
+        <div class="grid-col grid-col--left">
           <CalculatorSize />
         </div>
-        <div class="grid-col">
+        <div class="grid-col grid-col--right">
           <CalculatorRatio />
         </div>
       </div>
@@ -36,16 +36,24 @@ export default defineComponent({
 .grid-container {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 5rem;
+  display: block;
 
   @include mq(small) {
-    grid-template-columns: 1fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5rem;
   }
 
   @include mq(large) {
     gap: 10rem;
+  }
+}
+
+.grid-col--right {
+  margin-top: 5rem;
+
+  @include mq(small) {
+    margin-top: 0;
   }
 }
 </style>
