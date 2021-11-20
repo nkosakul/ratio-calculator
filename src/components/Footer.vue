@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="footer__inner container--large">
       <small class="footer__copyright">
-        Made with <span class="text--ci" aria-hidden="true">♥</span><span class="sr-only">love</span> by Nattaphong Kosakul
+        Made with <span class="text--ci" aria-hidden="true">♥</span><span class="sr-only">love</span> by <a href="https://github.com/nkosakul" target="_blank" rel="noopener noreferrer">Nattaphong Kosakul</a>
       </small>
     </div>
   </footer>
