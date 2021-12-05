@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <Header />
+    <Header :lightModeActive="lightModeActive" @toggle-light-mode="toggleLightmode" />
     <main>
       <section class="container--small" aria-labelledby="intro-heading">
         <header>
@@ -25,6 +25,45 @@ export default defineComponent({
     Header,
     FormBox,
     Footer,
+  },
+  data() {
+    return {
+      lightModeActive: false,
+    };
+  },
+  watch: {
+    // whenever question changes, this function will run
+    lightModeActive() {
+      if (this.lightModeActive) {
+        document.body.classList.add('light-mode');
+        localStorage.setItem('aspect-ratio-calculator-theme', 'light');
+      } else {
+        document.body.classList.remove('light-mode');
+        localStorage.setItem('aspect-ratio-calculator-theme', 'dark');
+      }
+    },
+  },
+  created() {
+    const themeStorage = localStorage.getItem('aspect-ratio-calculator-theme');
+    const metaThemeColor: HTMLElement | null = document.querySelector('meta[name=theme-color]');
+    const lightThemeColor = '#faf6ef';
+    const darkThemeColor = '#22292e';
+
+    if (themeStorage) {
+      this.lightModeActive = themeStorage === 'light';
+      if (metaThemeColor) metaThemeColor.setAttribute('content', lightThemeColor);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      this.lightModeActive = false;
+      if (metaThemeColor) metaThemeColor.setAttribute('content', darkThemeColor);
+    } else {
+      this.lightModeActive = true;
+      if (metaThemeColor) metaThemeColor.setAttribute('content', lightThemeColor);
+    }
+  },
+  methods: {
+    toggleLightmode() {
+      this.lightModeActive = !this.lightModeActive;
+    },
   },
 });
 </script>

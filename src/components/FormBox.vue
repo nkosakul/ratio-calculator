@@ -40,7 +40,7 @@ export default defineComponent({
 
   @include mq(small) {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 5rem;
   }
 

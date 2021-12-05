@@ -2,7 +2,10 @@
   <footer class="footer">
     <div class="footer__inner container--large">
       <small class="footer__tip">
-        <a href="https://paypal.me/nkosakul?country.x=DE&locale.x=de_DE">Buy me a coffee</a>
+        <a href="https://paypal.me/nkosakul?country.x=DE&locale.x=de_DE" target="_blank" ref="noopener noreferrer">
+          Buy me a coffee
+          <span class="sr-only">(link will open in a new window)</span>
+        </a>
       </small>
       <small class="footer__copyright">
         Made with <span class="text--ci" aria-hidden="true">♥</span><span class="sr-only">love</span> by <a href="https://github.com/nkosakul" target="_blank" rel="noopener noreferrer">Nattaphong Kosakul</a>

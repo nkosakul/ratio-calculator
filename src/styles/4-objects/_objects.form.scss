@@ -38,9 +38,10 @@
   -webkit-appearance: none;
   width: 100%;
   padding: 1rem;
-  border: 3px solid var(--color-gray-light);
+  border: 3px solid var(--color-theme-light);
   font-weight: $font-weight-bold;
-  background-color: var(--color-gray-light);
+  color: var(--color-theme-black);
+  background-color: var(--color-theme-light);
 
   &:focus-visible {
     border-color: var(--color-ci);
@@ -48,7 +49,7 @@
 }
 
 .form__input[readonly] {
-  color: var(--color-gray-light);
+  color: var(--color-theme-light);
   border-color: transparent;
   background-color: transparent;
   cursor: default;
@@ -73,7 +74,7 @@
   height: 300px;
   position: absolute;
   display: block;
-  background-color: var(--color-gray-dark);
+  background-color: var(--color-theme-dark);
   pointer-events: none;
 
   @include mq(medium) {

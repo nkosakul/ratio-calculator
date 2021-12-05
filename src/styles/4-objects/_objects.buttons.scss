@@ -7,7 +7,7 @@
   text-decoration: none;
   border: 5px solid var(--color-ci);
   width: 100%;
-  color: var(--color-white);
+  color: var(--color-theme-white);
   font-size: 1.7rem;
   font-weight: $font-weight-bold;
   transition: background-color 0.2s ease-in-out;
@@ -26,7 +26,7 @@
   justify-content: center;
   width: 40px;
   flex: 0 0 auto;
-  color: var(--color-white);
+  color: var(--color-theme-white);
   font-size: 1.7rem;
   transition: color 0.2s ease-in-out;
 
