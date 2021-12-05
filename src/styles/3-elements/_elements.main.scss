@@ -9,14 +9,22 @@ html {
   line-height: $line-height;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-gray-dark);
+  background-color: var(--color-theme-dark);
 }
 
 body {
-  color: var(--color-gray-light);
-  background-color: var(--color-gray-dark);
+  color: var(--color-theme-light);
+  background-color: var(--color-theme-dark);
   font-size: 19px;
   line-height: $line-height;
+}
+
+body.light-mode {
+  // Colors
+  @each $color-name, $color-hex in $colorsLight {
+    --color-#{$color-name}: #{$color-hex};
+    --color-#{$color-name}-rgb: #{hextorgb($color-hex)};
+  } 
 }
 
 :root {

@@ -13,10 +13,10 @@
               type="file"
               accept="image/*"
               @change="getImageInfos"
-            >
+            />
             <label
               class="form__label form__label--upload"
-              :class="{ 'form__label--has-file': hasFile}"
+              :class="{ 'form__label--has-file': hasFile }"
               for="file-upload"
             >
               Upload your image to get size and ratio
@@ -30,13 +30,13 @@
         <p class="data-list__title">Success!</p>
         <ul class="data-list">
           <li>
-            <strong>width:</strong> <span>{{width}}</span>
+            <strong>width:</strong> <span>{{ width }}</span>
           </li>
           <li>
-            <strong>height:</strong> <span>{{height}}</span>
+            <strong>height:</strong> <span>{{ height }}</span>
           </li>
           <li>
-            <strong>ratio:</strong> <span>{{ratio}}</span>
+            <strong>ratio:</strong> <span>{{ ratio }}</span>
           </li>
         </ul>
       </div>
@@ -104,12 +104,12 @@ export default defineComponent({
   border-radius: 0;
   border: none;
   background: none;
-  aspect-ratio: 16 / 1;
   position: relative;
   z-index: 1;
 
   @include mq(small) {
     font-size: 2.5rem;
+    aspect-ratio: 16 / 1;
   }
 }
 
@@ -125,7 +125,7 @@ export default defineComponent({
 
 .form__file-upload:focus-visible + label {
   text-decoration: underline;
-  outline: 4px dotted var(--color-gray-light);
+  outline: 4px dotted var(--color-theme-light);
 }
 
 .text--big {
@@ -134,7 +134,7 @@ export default defineComponent({
   font-weight: $font-weight-bold;
 }
 
-.data-list-wrapper {
+.data-list-wrapper > div {
   position: relative;
   z-index: 1;
   margin-top: 5rem;
