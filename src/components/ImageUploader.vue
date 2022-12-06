@@ -62,7 +62,7 @@ export default defineComponent({
     getImageInfos(event: Event) {
       const target = event.target as HTMLInputElement;
       const { files } = target;
-      const file = files?.[0];
+      const file = files && files[0];
       const image = new Image();
       const url = window.URL || window.webkitURL;
       const objectUrl = url.createObjectURL(file);
