@@ -1,5 +1,6 @@
 @use '~styles/0-settings/settings.fonts' as *;
 @use '~styles/1-tools/mixins/tools.fixed-ratio' as *;
+@use 'sass:math';
 
 .button {
   display: block;
@@ -19,7 +20,7 @@
 }
 
 .button--round {
-  @include fixed-ratio(1 / 1);
+  @include fixed-ratio(math.div(1, 1));
 
   display: flex;
   align-items: center;
